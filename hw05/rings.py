@@ -30,7 +30,19 @@ screen.fill(WHITE)
 ##  and arc.  Also, the width
 ##  parameter
 #################################
+ringWidth = 25
+shadowWidth = ringWidth + 10
+ringRectSize = 250
+shadowRectSize = ringRectSize + 10
 
+pygame.draw.arc(screen, WHITE, Rect(15,0,shadowRectSize, shadowRectSize),0, 360, shadowWidth)
+pygame.draw.arc(screen, BLUE, Rect(20,5,ringRectSize, ringRectSize), 0, 360, ringWidth)
+
+pygame.draw.arc(screen, WHITE, Rect(145,130,shadowRectSize, shadowRectSize),0, 360, shadowWidth)
+pygame.draw.arc(screen, YELLOW, Rect(150,135,ringRectSize, ringRectSize), 0, 360, ringWidth)
+
+pygame.draw.arc(screen, WHITE, Rect(15,0,shadowRectSize, shadowRectSize),0, 90, shadowWidth)
+pygame.draw.arc(screen, BLUE, Rect(20,5,ringRectSize, ringRectSize), 0, 360, ringWidth)
 
 ## Loop
 clock = pygame.time.Clock()

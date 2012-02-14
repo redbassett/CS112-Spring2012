@@ -82,3 +82,13 @@ Finish all the problems in `lists.py`.  Each question only requires a single pyt
 >
 > **Advanced Rings:**
 > ![Image](https://github.com/HampshireCS/CS112-Spring2012/raw/master/hw05/example_rings_adv.png)
+
+
+
+
+Notes:
+
+from pygame import Rect
+
+blue = Rect(x,y,w,h)
+blue.inflate(x,y)
