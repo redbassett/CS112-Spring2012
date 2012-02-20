@@ -8,18 +8,18 @@ I used this:
 """
 from hwtools import input_nums
 
-nums = inputnums()
+nums = input_nums()
 
 print "Before sort:"
 print nums
 
 N=len(nums)-1
-for x in range(N)
+for x in range(N):
     p=x
-    for i in range(x+1 N):
+    for i in range(x+1, N):
         if nums[i]<nums[p]:
-            pos=i
-   nums[x],nums[p]=nums[p],nums[x]
+            p=i
+    nums[x],nums[p]=nums[p],nums[x]
 
 print "After sort:"
 print nums
