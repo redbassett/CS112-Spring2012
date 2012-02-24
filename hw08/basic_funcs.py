@@ -12,7 +12,8 @@
 #   hello, world
 
 # def greeter(name):
-
+def greeter(name):
+    print "hello,",str(name).lower()
 
 # Draw a box
 #    given a width and a height, draw a box in the terminal.  Use print statements
@@ -31,8 +32,34 @@
 #    +-+
 
 # def box(w,h):
+def box(w,h):
+    a = w
+    b = h
+    if w != '' and h != '':
+        w = int(w)
+        h = int(h)
+    else:
+        print "Error: Invalid Dimensions"
+        return False
 
-
+    if type(w) is str and type(h) is str and w > 0 and h > 0:
+    #if w > 0 and h > 0:
+        for x in range(h):
+            printString = ''
+            for y in range(w):
+                if x == 0 or x == h-1:
+                    if y == 0 or y == w-1:
+                        printString += "+"
+                    else:
+                        printString += "-"
+                else:
+                    if y == 0 or y == w-1:
+                        printString += "|"
+                    else:
+                        printString += " "
+            print printString
+    else:
+        print "Error: Invalid Dimensions"
 
 # ADVANCED
 # Draw a Festive Tree
@@ -51,4 +78,5 @@
 #       | |
 
 # def tree()
-
+def tree():
+    return ""
