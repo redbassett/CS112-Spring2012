@@ -1,3 +1,5 @@
+import math
+
 # Shapes
 # =========================================================
 # 
@@ -21,6 +23,45 @@
 #     >>> print c.area()
 #     28.274333882308138
 #     
+class Shape(object):
+    def __init__(self, *args):
+        pass
+    
+    def perimeter(self):
+        pass
+    
+    def area(self):
+        pass
+
+class Square(Shape):
+    def __init__(self, *args):
+        self.dim = args[0]
+    
+    def perimeter(self):
+        return 4*self.dim
+    
+    def area(self):
+        return self.dim**2
+
+class Rect(Shape):
+    def __init__(self, *args):
+        self.x = args[0]
+        self.y = args[1]
+    
+    def perimeter(self):
+        return (2*self.x)+(2*self.y)
+    
+    def area(self):
+        return self.x*self.y
+
+class Circle(Shape):
+    def __init__(Self, *args):
+        self.r = args[0]
+    
+    def perimeter(self):
+        
+
+
 
 # Advanced Section
 # ---------------------------------------------------------
