@@ -24,8 +24,20 @@ search, and manipulate a multidimensional array.
 #       >>> find_coins(room)
 #       [ [3, 0], [2, 1], [4, 2] ]
 #      
+
+
+# Generates phantom coins.  Not sure how, can't read error messages
 def find_coins(room):
-    "returns a list of every coin in the room"
+    coins = []
+    cury = 0
+    for y in room:
+        curx = 0
+        for x in room[cury]:
+            if room[cury][curx] == 1:
+                coins.append([curx,cury])
+            curx += 1
+        cury += 1
+    return coins
 
 
 # 2. distance_from_player
@@ -34,7 +46,20 @@ def find_coins(room):
 #      width and height where each square is the distance
 #      from the player
 import math
+
+def distance(x1, y1, x2, y2):
+    return math.sqrt(((x2-x1)**2)+((y2-y1)**2))
+
+# Once again, can't decode error.
 def distance_from_player(player_x, player_y, width, height):
-    "calculates the distance of each square from the player"
-
-
+    grid = []
+    y = 0
+    while y < height:
+        row = []
+        x = 0
+        while x < width:
+            row.append(distance(player_x, player_y, x+1, y+1))
+            x += 1
+        grid.append(row)
+        y += 1
+    return grid

@@ -15,8 +15,13 @@ manipulate python dictionaries.
 #          { 1: 3, 2: 4, 3: 1, 4: 1, 5: 1, 9: 1, 10: 1}
 
 def freq(data):
-    "calculate the frequency for each value in data"
-
+    occ = {}
+    for x in data:
+        if x in occ:
+            occ[x] += 1
+        else:
+            occ[x] = 1
+    return occ
 
 
 # 2. Movie Reviews
@@ -40,11 +45,18 @@ def freq(data):
 movies = {}
 
 def score(title, value):
-    "register the score for a given movie out of 5"
+    if title in movies:
+        movies[title].append(value)
+    else:
+        movies[title] = [1]
 
 
 def avg_score(title):
-    "return the average score for a given movie"
+    if title in movies:
+        # Int added trying to solve "wrong" average issue…
+        return int(sum(movies[title])/len(movies[title]))
+    else:
+        return None
 
 
 
@@ -67,6 +79,10 @@ def avg_score(title):
 #             { "name": "Bar", "age": "22", "email": "bar@example.com" },
 #             { "name": "Baz", "age": "20", "email": "baz@example.com" } ]            
 
-def parse_csv(data):
-    "parses a csv file into a list of dictionaries"
+import string
 
+def parse_csv(data):
+    dict = {}
+    rows = data.split("\n")
+    for r in rows:
+        r.split(',')

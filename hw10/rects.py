@@ -32,9 +32,31 @@ from pygame import Rect
 #
 #      returns:  True or False
 
-def poly_in_rect(poly, rect):
-    "check if polygon is within rectangle"
 
+# In frist (commented out) version, a rect is created to be the boudns of the poly.  This method will trigger false positives if rect is inside the bounds, but not actually crossing with the polygon.
+# In second version, simply check all points agaimnst rect, and hope that rect doesn't simply collide with a line or the center of the poly.
+def poly_in_rect(poly, rect):
+    '''xmax = xmin = ymax = ymin = 0
+    for x, y in poly:
+        if x > xmax:
+            xmax = x
+        elif x < xmin:
+            xmin = x
+        if y > ymax:
+            ymax = y
+        elif y < ymin:
+            ymin = y
+    '''
+    #w = xmax-xmin
+    #h = ymax-ymin
+    #return rect.colliderect(Rect(xmin, ymin, w, h))
+    
+    flag = False
+    for x, y in poly:
+        if rect.collidepoint(x, y):
+            flag = True
+    
+    return flag
 
 
 # 2. surround_poly
@@ -44,7 +66,19 @@ def poly_in_rect(poly, rect):
 #
 #      returns:  pygame.Rect
 
+
+# Reports an incorrect x, not sure why.
 def surround_poly(poly):
-    "create a rectangle which surounds a polygon"
-
-
+    xmax = xmin = ymax = ymin = 0
+    for x, y in poly:
+        if x > xmax:
+            xmax = x
+        elif x < xmin:
+            xmin = x
+        if y > ymax:
+            ymax = y
+        elif y < ymin:
+            ymin = y
+    w = xmax-xmin
+    h = ymax-ymin
+    return Rect(xmin, ymin, w, h)
