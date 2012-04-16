@@ -3,28 +3,33 @@ from random import randrange
 from pygame import Surface
 from pygame.sprite import Sprite, Group
 
-from settings import COIN_COLOR, COIN_SPAWN_RATE, COIN_SIZE
 
+## Coin
 class Coin(Sprite):
-
     def __init__(self, loc):
         Sprite.__init__(self)
 
-        self.image = Surface(COIN_SIZE)
+        self.image = self.create_image()
         self.rect = self.image.get_rect()
-
-        self.image.fill((0,0,0))
-        self.image.fill(COIN_COLOR, self.rect.inflate(-2, -2))
         self.rect.center = loc
 
+    def create_image(self):
+        image = Surface((15, 15))
+        rect = image.get_rect()
+        image.fill((0,0,0), rect)
+        image.fill((255,255,0), rect.inflate(-2,-2))
+        return image
+
+    def update(self, dt):
+        pass
 
 class CoinGroup(Group):
+    spawn_rate = 1000   # ms
+
     def __init__(self, bounds):
         Group.__init__(self)
 
         self.bounds = bounds
-
-        self.spawn_rate = COIN_SPAWN_RATE * 1000
         self.spawn_timer = 0
 
     def spawn(self):
@@ -36,9 +41,11 @@ class CoinGroup(Group):
         self.add(coin)
 
     def update(self, dt):
+        Group.update(self, dt)
+    
+        # update the spawner
         self.spawn_timer += dt
         if self.spawn_timer >= self.spawn_rate:
             self.spawn()
             self.spawn_timer = 0
-
 

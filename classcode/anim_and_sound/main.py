@@ -1,12 +1,11 @@
 import pygame
 
-from gamelib.settings import SCREEN_SIZE
-from gamelib.game import Game
+from game import Game
 
 def main():
     # initialize pygame
     pygame.init()
-    screen = pygame.display.set_mode(SCREEN_SIZE)
+    screen = pygame.display.set_mode((800, 800))
 
     # create game
     game = Game(screen)
@@ -14,3 +13,6 @@ def main():
         game.run()
     except KeyboardInterrupt:
         game.quit()
+
+if __name__ == "__main__":
+    main()
