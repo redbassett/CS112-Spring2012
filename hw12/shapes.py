@@ -62,7 +62,7 @@ class Circle(Shape):
 
 
 class Polygon(Shape):
-    def __init(self, *args):
+    def __init__(self, *args):
         for arg in args:
             self.points.append(arg)
         self.pts = self.points # Attempt to please the stupid tester that doesn't actual explain the error.
